@@ -12,5 +12,6 @@ RSpec.describe Product, type: :model do
 		expect(columns).to include("price")
 		expect(columns).to include("description")
 		expect(columns).to include("quantity")
+		expect(columns).not_to include("content")
 	end
 end
