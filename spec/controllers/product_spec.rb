@@ -4,12 +4,19 @@ RSpec.describe Admin::ProductsController, type: :controller do
   before(:all) do
     @product1 = Product.create(title: "Prod_1", description: "Desc_1", quantity: 1, price: 100)
   end
+  login_user
+
+   it "should have a current_user" do
+    # note the fact that you should remove the "validate_session" parameter if this was a scaffold-generated controller
+    expect(subject.current_user).to eq(User.last)
+  end
 
   it '#index' do
-    get :index
+    get :index 
     expect(response).to have_http_status(200)
     expect(response).to render_template(:index)
   end
+
 
   it '#new' do
     get :new

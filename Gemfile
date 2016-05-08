@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 
-
+gem 'factory_girl'
 gem 'devise'
 gem 'rspec'
 gem 'rspec-rails'
