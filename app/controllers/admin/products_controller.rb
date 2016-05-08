@@ -28,11 +28,10 @@ class Admin::ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.update(product_params)
-		if @product.save
+		if @product.update(product_params)
     	redirect_to admin_product_url(@product), notice: 'Product was successfully created.'
     else
-			render :new 
+			render :edit
     end		
   end
 
