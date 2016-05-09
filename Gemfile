@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+
+
+
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'faker'
 gem "factory_girl_rails", "~> 4.0"
 gem 'devise'
