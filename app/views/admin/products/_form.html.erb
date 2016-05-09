@@ -28,9 +28,9 @@
 		<%= f.input :price %>
 	</div>
 
-	<% if photo.image.present? %>
+	<% if @photo.present? %>
 		<span>Current Image</span> <br>
-		<%= image_tag photo.image.thumb.url %>	
+		<%= image_tag @photo.image.thumb.url %>	
 	<% end %>
 
 	<div class="form-group">

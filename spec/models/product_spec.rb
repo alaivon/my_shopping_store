@@ -39,7 +39,7 @@ RSpec.describe Product, type: :model do
 
 	it 'has photo' do
 		product = create(:product)
-		photo = Photo.create(product_id: product.id)
+		photo = Photo.create(product_id: product.id, image: "title")
 		# photo = Photo.create(image: "apple", product_id: product.id)
 		expect(product.photo).to eq(photo)
 	end
