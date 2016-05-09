@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
 
-
+gem "carrierwave"
+gem "mini_magick"
 gem 'simple_form'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'faker'
