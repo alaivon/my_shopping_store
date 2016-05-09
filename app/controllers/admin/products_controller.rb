@@ -49,11 +49,7 @@ class Admin::ProductsController < ApplicationController
 
   private
 
-  def admin_required
-    if !current_user.admin?
-      redirect_to '/'
-    end
-  end
+
 
   def set_product
     @product = Product.find(params[:id])
