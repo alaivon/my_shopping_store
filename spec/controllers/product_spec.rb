@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Admin::ProductsController, type: :controller do
   before(:all) do
-    @product1 = Product.create(title: "Prod_1", description: "Desc_1", quantity: 1, price: 100)
+    # @product1 = Product.create(title: "Produ_1", description: "Desc_1", quantity: 1, price: 100)
+    @product1 = create(:product)
   end
   login_user
 
@@ -38,7 +39,7 @@ RSpec.describe Admin::ProductsController, type: :controller do
 
   describe '#create' do
     before(:all) do
-      @product_params = {title: 'title', description: 'description'}
+      @product_params = {title: 'title', description: 'description', price: 1, quantity: 12}
     end
     it 'create data' do
       expect{post :create, product: @product_params}.to change{Product.all.size}.by(1)
@@ -62,7 +63,7 @@ RSpec.describe Admin::ProductsController, type: :controller do
 
   describe '#update' do
     before(:all) do
-      @product_params = {title: 'title3', description: 'description'}
+      @product_params = {title: 'title3', description: 'description', price: 1, quantity: 1}
     end
     it 'update data' do
       post :update, product: @product_params, id: @product1.id
@@ -87,7 +88,7 @@ RSpec.describe Admin::ProductsController, type: :controller do
 
   describe '#destroy' do
     before(:each) do
-      @product2 = @product1 || Product.create(title: "title1234", description: "Hello World")
+      @product2 = @product1 || Product.create(title: "title1234", description: "Hello World", price: 1, quantity: 1)
     end
     it 'destroy data' do
       expect {delete :destroy, id: @product2.id}.to change{Product.all.count}.by(-1)
