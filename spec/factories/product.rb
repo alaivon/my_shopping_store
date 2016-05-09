@@ -14,8 +14,8 @@ FactoryGirl.define do
   	password 1234567
   	password_confirmation 1234567
   	is_admin true
-
   end
+
 
   # factory :image do
   #  product :product
