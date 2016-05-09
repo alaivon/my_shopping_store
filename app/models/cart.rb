@@ -6,5 +6,9 @@ class Cart < ActiveRecord::Base
   	items << product
   end
 
+  def total_price
+  	items.inject(0){|sum, item| item.price}
+  end
+
 
 end
