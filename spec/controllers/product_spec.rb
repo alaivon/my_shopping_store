@@ -101,5 +101,14 @@ RSpec.describe Admin::ProductsController, type: :controller do
     end
   end
 
+  describe '#admin_required' do
+    login_user_without_admin
+    it 'redirect to root_url if not admin user' do
+      get :index
+      expect(response).to have_http_status(302)
+      expect(response).to redirect_to(root_url)
+    end
+  end
+
 
 end

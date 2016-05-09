@@ -6,8 +6,8 @@ namespace :admin do
   resources :products
 end
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-
+  root 'products#index'
+resources :products
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
