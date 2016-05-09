@@ -24,6 +24,10 @@
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
+              <% if current_user.admin? %>
+                <li><%= link_to 'Admin Options', admin_products_path  %></li>
+              <% end %>
+              <li class="divider"></li>
               <li>
                 <%= link_to("Log Out", destroy_user_session_path, method: :delete ) %>
               </li>
