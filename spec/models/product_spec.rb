@@ -34,8 +34,15 @@ RSpec.describe Product, type: :model do
 			@product5 = Product.new(title: @product4.title, description: "test data", price: 1, quantity: 2)
 			expect(@product5).not_to be_valid
 			expect(@product5).to be_invalid
-
 		end
-
 	end
+
+	it 'has photo' do
+		product = create(:product)
+		photo = Photo.create(product_id: product.id)
+		# photo = Photo.create(image: "apple", product_id: product.id)
+		expect(product.photo).to eq(photo)
+	end
+
+
 end
