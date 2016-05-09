@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 
-
+gem 'simple_form'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'faker'
 gem "factory_girl_rails", "~> 4.0"
