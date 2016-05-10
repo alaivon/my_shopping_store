@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 	include CurrentCart
 	before_action :authenticate_user!
-	before_action :set_cart, only: [:create, :new]
+	before_action :set_cart
 
 	def new
 		if @current_cart.cart_items.empty?
@@ -22,6 +22,12 @@ class OrdersController < ApplicationController
 		else
 			render :new
 		end
+	end
+
+	def show
+		@order = current_user.orders.find(params[:id])
+		@info = @order.info
+		@order_items = @order.items
 	end
 
 

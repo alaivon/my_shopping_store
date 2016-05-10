@@ -35,3 +35,4 @@ notes:
 	rails g migration add_price_to_cart_items
 	increment decrement ajax
 	hidden div
+	order token
