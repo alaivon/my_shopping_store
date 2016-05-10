@@ -18,6 +18,8 @@ class OrdersController < ApplicationController
     if @order.save
       @order.add_items_from_cart(@current_cart)
       @order.calculate_total!(@current_cart)
+      Cart.destroy(session[:cart_id])
+      session[:cart_id] = nil
       redirect_to order_url(@order.token)
     else
       render :new
