@@ -14,7 +14,24 @@ class Cart < ActiveRecord::Base
   end
 
   def total_price
-  	items.inject(0){|sum, item| item.price}
+  	cart_items.inject(0){|sum, item| item.price * item.quantity}
+  end
+
+
+  def increse(cart_item_id)
+    current_item = cart_items.find_by_id(cart_item_id)
+    current_item.quantity +=1
+    current_item
+  end
+
+  def decrese(cart_item_id)
+    current_item = cart_items.find_by_id(cart_item_id)
+    if current_item.quantity > 1
+      current_item.quantity -= 1
+    else
+      current_item.destroy
+    end
+    current_item
   end
 
 

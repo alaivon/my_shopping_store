@@ -4,4 +4,32 @@ class CartItemsController < ApplicationController
 		@cart_item.destroy
 		redirect_to :back
 	end
+
+	def decrement
+    @cart_item = @current_cart.decrese(params[:id])
+    respond_to do |format|
+      if @cart_item.save
+        format.html {redirect_to carts_url}
+        format.js {@current_item = @cart_item}
+        format.json {head :ok}
+      else
+        format.html {render :edit}
+        format.json {render json: @cart_item.errors, status: :unprocessable_entity}
+      end
+    end
+  end
+
+    def increment
+    @cart_item = @current_cart.increse(params[:id])
+    respond_to do |format|
+      if @cart_item.save
+        format.html {redirect_to carts_url}
+        format.js {@current_item = @cart_item}
+        format.json {head :ok}
+      else
+        format.html {render :edit}
+        format.json {render json: @line_item.errors, status: :unprocessable_entity}
+      end
+    end
+  end
 end

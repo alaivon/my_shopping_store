@@ -21,7 +21,12 @@ resources :products do
 end
 
 resources :carts
-resources :items, controller: 'cart_items', only: [:destroy]
+resources :items, controller: 'cart_items', only: [:destroy] do
+  member do
+    put 'decrement'
+    put 'increment'
+  end
+end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

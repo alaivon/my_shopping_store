@@ -12,7 +12,12 @@
   <td>
     <%= link_to(cart_item.product.title, product_path(cart_item.product)) %>
   </td>
-  <td><%= cart_item.quantity %></td>
+  <td>
+    <%= button_to '+', increment_item_path(cart_item), method: :put, remote: true, class: "btn btn-default btn-xs" %>
+    <%= cart_item.quantity %>
+    <%= button_to '-', decrement_item_path(cart_item), method: :put, remote: true, class: "btn btn-default btn-xs" %>
+
+  </td>
   <td>
     <%= number_to_currency(cart_item.total_price) %>
   </td>
