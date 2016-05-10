@@ -27,6 +27,7 @@ resources :items, controller: 'cart_items', only: [:destroy] do
     put 'increment'
   end
 end
+resources :orders, only: [:new, :create, :show, :index]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

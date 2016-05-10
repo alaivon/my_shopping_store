@@ -4,7 +4,7 @@ class Cart < ActiveRecord::Base
 
   def add_product_to_cart(product)
   	current_item = cart_items.find_by(product_id: product.id)
-  	if current_item
+  	if current_item.quantity
   		current_item.quantity +=1
   	else
 	  	current_item = cart_items.build(product_id: product.id, price: product.price)
