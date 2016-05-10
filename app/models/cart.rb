@@ -3,7 +3,13 @@ class Cart < ActiveRecord::Base
   has_many :items, through: :cart_items, source: :product
 
   def add_product_to_cart(product)
-  	items << product
+  	current_item = cart_items.find_by(product_id: product.id)
+  	if current_item
+  		current_item.quantity +=1
+  	else
+	  	current_item = cart_items.build(product_id: product.id)
+	  end
+	  current_item
   end
 
   def total_price

@@ -14,7 +14,11 @@ class ProductsController < ApplicationController
 
 	def add_to_cart
 		@product = Product.find(params[:id])
-		@current_cart.add_product_to_cart(@product)
-		redirect_to :back
+		@cart_item = @current_cart.add_product_to_cart(@product)
+		if @cart_item.save
+			redirect_to :back, notice: "You add #{@product.title} to your cart"
+		else
+			render :show
+		end
 	end
 end
