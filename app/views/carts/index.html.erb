@@ -1,55 +1,34 @@
 <div class="row">
   <div class="col-md-12">
-  <%= button_to 'Empty Cart', @current_cart, method: :delete, data: {confirm: "Are you sure?"} %>
-    <h2> Your Cart </h2>
+    <%=  hidden_div_if(@current_cart.cart_items.empty?, id: 'cart') do %> 
+      <%= button_to 'Empty Cart', @current_cart, method: :delete, data: {confirm: "Are you sure?"} %>
+        <h2> Your Cart </h2>
 
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th colspan="2">Product Info.</th>
-          <th>Quantity</th>
-          <th>price</th>
-          <th>Options</th>
-        </tr>
-      </thead>
-      <tbody>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th colspan="2">Product Info.</th>
+              <th>Quantity</th>
+              <th>price</th>
+              <th>Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render @current_cart.cart_items %>
 
-        <% @current_cart.cart_items.each do |item| %>
-          <tr>
-            <td>
-              <%= link_to product_path(item.product) do %>
-                <% if item.product.photo.present? %>
-                  <%= image_tag(item.product.photo.image.thumb.url, class: "thumbnail") %>
-                <% else %>
-                  <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
-                <% end %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to(item.product.title, product_path(item.product)) %>
-            </td>
-            <td><%= item.quantity %></td>
-            <td>
-              <%= number_to_currency(item.total_price) %>
-            </td>
-            <td><%= button_to 'Delete it', item_path(item), method: :delete, data: {confirm: "Are you sure?"} %></td>
-          </tr>
-        <% end %>
-        <tr>
-          <td colspan="3" class= "total_title">Total</td>
-          <td class="total_price"> <%= render_cart_total(@current_cart) %></td>
-        </tr>
-      </tbody>
-    </table>
+            <tr>
+              <td colspan="3" class= "total_title">Total</td>
+              <td class="total_price"> <%= render_cart_total(@current_cart) %></td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <hr>
 
-    <br>
-
-
-
-    <hr>
-
-    <div class="checkout clearfix">
-      <%= link_to("Check Out", "#", method: :post, class: "btn btn-lg btn-danger pull-right") %>
+        <div class="checkout clearfix">
+          <%= link_to("Check Out", "#", method: :post, class: "btn btn-lg btn-danger pull-right") %>
+     <% end %>
+    </div>
     </div>
   </div>
 </div>

@@ -1,0 +1,21 @@
+        
+<tr>
+  <td>
+    <%= link_to product_path(cart_item.product) do %>
+      <% if cart_item.product.photo.present? %>
+        <%= image_tag(cart_item.product.photo.image.thumb.url, class: "thumbnail") %>
+      <% else %>
+        <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
+      <% end %>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to(cart_item.product.title, product_path(cart_item.product)) %>
+  </td>
+  <td><%= cart_item.quantity %></td>
+  <td>
+    <%= number_to_currency(cart_item.total_price) %>
+  </td>
+  <td><%= button_to 'Delete it', item_path(cart_item), method: :delete, data: {confirm: "Are you sure?"} %></td>
+</tr>
+

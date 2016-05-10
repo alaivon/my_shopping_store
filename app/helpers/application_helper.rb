@@ -21,4 +21,14 @@ module ApplicationHelper
   def render_cart_items_count(cart)
       cart.cart_items.count
   end
+
+  def hidden_div_if(condition, attributes= {}, &block)
+    if condition
+      attributes["style"] = 'display: none'
+      content_tag("h2", "There aren't any products in your cart", id: 'no_item_message')
+    else
+      content_tag("div", attributes, &block)
+    end
+  end
+
 end
