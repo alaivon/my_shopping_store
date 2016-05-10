@@ -1,10 +1,10 @@
 class Admin::ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :on_sale, :off_sale]
   before_action :authenticate_user!
   before_action :admin_required
 
   def index
-    @products = Product.all
+    @products = Product.where(on_sale: true)
   end
 
   def show
@@ -26,25 +26,35 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-      if @product.save
-        redirect_to admin_product_url(@product), notice: 'Product was successfully created.'
-      else
-			  render :new 
-      end
+    if @product.save
+      redirect_to admin_product_url(@product), notice: 'Product was successfully created.'
+    else
+      render :new
+    end
 
   end
 
   def update
-		if @product.update(product_params)
-    	redirect_to admin_product_url(@product), notice: 'Product was successfully created.'
+    if @product.update(product_params)
+      redirect_to admin_product_url(@product), notice: 'Product was successfully created.'
     else
-			render :edit
-    end		
+      render :edit
+    end
   end
 
   def destroy
-   @product.destroy
-   redirect_to admin_products_path
+    @product.destroy
+    redirect_to admin_products_path
+  end
+
+  def on_sale
+    @product.turn_on_sale
+    redirect_to :back, notice: "#{@product.title} is ON-SALE now!"
+  end
+
+  def off_sale
+    @product.turn_off_sale
+    redirect_to :back, notice: "#{@product.title} is OFF-SALE now!"
   end
 
   private

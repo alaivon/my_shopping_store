@@ -10,6 +10,7 @@
       <th>Title</th>
       <th>Price</th>
       <th width="100"> Options</th>
+      <th>On-Sale</th>
     </tr>
   </thead>
   <tbody>
@@ -36,6 +37,14 @@
         <td>
           <%= link_to("Edit", edit_admin_product_path(product)) %> |
           <%= link_to "Delete", admin_product_path(product), method: :delete, data: {confirm: "Are you sure?"}  %>
+        </td>
+        <td>
+          <% if product.on_sale ==false %>
+            <%= link_to "ON-SALE", on_sale_admin_product_path(product), method: :post  %>
+            <% else %>
+            <%= link_to "OFF-SALE", off_sale_admin_product_path(product), method: :post, data: {confirm: "Your product will be off-sale, Are you Sure?"}  %>
+
+          <% end %>
         </td>
       </tr>
     <% end %>

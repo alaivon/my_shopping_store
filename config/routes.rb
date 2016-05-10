@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   namespace :admin do
-    resources :products
+    resources :products do
+      member do
+        post :on_sale
+        post :off_sale
+      end
+    end
     resources :users  do
       member do
         post :to_admin
