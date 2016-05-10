@@ -33,3 +33,5 @@ notes:
 	use inject to total price
 	empty cart => destroy action
 	rails g migration add_price_to_cart_items
+	increment decrement ajax
+	hidden div
