@@ -32,7 +32,9 @@ notes:
 	add_product_to_cart method in model cart
 	use inject to total price
 	empty cart => destroy action
+	cart_item delete => destroy action
 	rails g migration add_price_to_cart_items
 	increment decrement ajax
 	hidden div
 	order token
+	aasm
