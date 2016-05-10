@@ -1,1 +1,4 @@
 $('#cart').html("<%= escape_javascript render @current_cart %>");
+if ($('#cart tr').length === 2) {
+	$('#cart').hide();
+}
