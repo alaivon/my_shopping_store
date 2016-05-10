@@ -38,3 +38,4 @@ notes:
 	hidden div
 	order token
 	aasm
+	i18n

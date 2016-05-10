@@ -21,3 +21,11 @@
 
 en:
   hello: "Hello world"
+  orders:
+    order_state:
+      order_placed: Order Placed
+      paid: Paid
+      shipping: Shipping
+      shipped: Arrived
+      order_cancelled: Cancel Order
+      good_returned: Return Product

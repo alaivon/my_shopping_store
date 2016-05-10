@@ -2,37 +2,45 @@ Rails.application.routes.draw do
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-namespace :admin do
-  resources :products
-  resources :users  do
+  namespace :admin do
+    resources :products
+    resources :users  do
+      member do
+        post :to_admin
+        post :to_normal
+      end
+    end
+    resources :orders, only: [:index, :show] do
+      member do
+        post :cancel
+        post :ship
+        post :arrived
+        post :return
+      end
+    end
+
+  end
+  # You can have the root of your site routed with "root"
+  root 'products#index'
+  resources :products do
     member do
-      post :to_admin
-      post :to_normal
+      post :add_to_cart
     end
   end
 
-end
-  # You can have the root of your site routed with "root"
-  root 'products#index'
-resources :products do
-  member do
-    post :add_to_cart
+  resources :carts
+  resources :items, controller: 'cart_items', only: [:destroy] do
+    member do
+      put 'decrement'
+      put 'increment'
+    end
   end
-end
-
-resources :carts
-resources :items, controller: 'cart_items', only: [:destroy] do
-  member do
-    put 'decrement'
-    put 'increment'
+  resources :orders, only: [:new, :create, :show, :index] do
+    member do
+      get :pay_by_card
+      get :pay_by_atm
+    end
   end
-end
-resources :orders, only: [:new, :create, :show, :index] do
-  member do
-    get :pay_by_card
-    get :pay_by_atm
-  end
-end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

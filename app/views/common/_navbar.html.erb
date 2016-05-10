@@ -31,6 +31,7 @@
             <ul class="dropdown-menu">
               <% if current_user.admin? %>
                 <li><%= link_to 'Admin Options', admin_products_path  %></li>
+                <li><%= link_to 'Order List', orders_path  %></li>
                 <li><%= link_to 'Users List', admin_users_path  %></li>
                 <li class="divider"></li>
               <% end %>
