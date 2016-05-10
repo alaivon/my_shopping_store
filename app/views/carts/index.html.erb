@@ -9,6 +9,7 @@
           <th colspan="2">Product Info.</th>
           <th>Quantity</th>
           <th>price</th>
+          <th>Options</th>
         </tr>
       </thead>
       <tbody>
@@ -31,6 +32,7 @@
             <td>
               <%= number_to_currency(item.total_price) %>
             </td>
+            <td><%= button_to 'Delete it', item_path(item), method: :delete, data: {confirm: "Are you sure?"} %></td>
           </tr>
         <% end %>
         <tr>

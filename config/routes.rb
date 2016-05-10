@@ -21,6 +21,7 @@ resources :products do
 end
 
 resources :carts
+resources :items, controller: 'cart_items', only: [:destroy]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
