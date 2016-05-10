@@ -1,4 +1,4 @@
-<%= button_to 'Empty Cart', cart, method: :delete, data: {confirm: "Are you sure?"} %>
+<%= button_to 'Empty Cart', cart, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default" %>
   <h2> Your Cart </h2>
 
   <table class="table table-bordered">
@@ -6,16 +6,17 @@
       <tr>
         <th colspan="2">Product Info.</th>
         <th>Quantity</th>
-        <th>price</th>
+        <th>Price</th>
         <th>Options</th>
       </tr>
     </thead>
     <tbody>
       <%= render cart.cart_items %>
 
-      <tr>
-        <td colspan="3" class= "total_title">Total</td>
-        <td class="total_price"> <%= render_cart_total(cart) %></td>
+      <tr class="cart_total">
+        <td colspan="3">Total</td>
+        <td colspan="2"> <%= render_cart_total(cart) %></td>
+
       </tr>
     </tbody>
   </table>

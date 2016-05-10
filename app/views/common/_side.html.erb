@@ -1,0 +1,9 @@
+  <div class="col-md-3">
+    <p class="lead">User Function</p>
+    <div class="list-group">
+      <%= link_to "My Orders", orders_path, class: "list-group-item"  %>
+      <%= link_to carts_path, class: "list-group-item" do  %>
+        My Cart <i class="fa fa-shopping-cart fa-lg">( <%= render_cart_items_count(@current_cart) %> )</i>
+      <% end %>
+    </div>
+  </div>

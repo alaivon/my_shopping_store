@@ -5,7 +5,7 @@
       <% if cart_item.product.photo.present? %>
         <%= image_tag(cart_item.product.photo.image.thumb.url, class: "thumbnail") %>
       <% else %>
-        <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
+        <%= image_tag("http://placehold.it/100x100&text=No Pic", class: "thumbnail") %>
       <% end %>
     <% end %>
   </td>
@@ -13,14 +13,23 @@
     <%= link_to(cart_item.product.title, product_path(cart_item.product)) %>
   </td>
   <td>
-    <%= button_to '+', increment_item_path(cart_item), method: :put, remote: true, class: "btn btn-default btn-xs" %>
+    <span><%= link_to increment_item_path(cart_item), method: :put, remote: true, class: "btn btn-default btn-xs" do %>
+      <i class="fa fa-plus" aria-hidden="true"></i>
+    <% end %>
     <%= cart_item.quantity %>
-    <%= button_to '-', decrement_item_path(cart_item), method: :put, remote: true, class: "btn btn-default btn-xs" %>
+    <%= link_to decrement_item_path(cart_item), method: :put, remote: true, class: "btn btn-default btn-xs" do %>
+      <i class="fa fa-minus" aria-hidden="true"></i>
+    <% end %>
+    </span>
 
   </td>
   <td>
     <%= number_to_currency(cart_item.total_price) %>
   </td>
-  <td><%= button_to 'Delete it', item_path(cart_item), method: :delete, data: {confirm: "Are you sure?"} %></td>
+  <td>
+    <%= button_to item_path(cart_item), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-warning btn-xs" do %>
+      Trash it <i class="fa fa-trash-o" aria-hidden="true"></i>
+    <% end %>
+  </td>
 </tr>
 
