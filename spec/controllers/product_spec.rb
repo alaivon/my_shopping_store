@@ -39,7 +39,7 @@ RSpec.describe Admin::ProductsController, type: :controller do
 
   describe '#create' do
     before(:all) do
-      @product_params = {title: 'title', description: 'description', price: 1, quantity: 12}
+      @product_params = {title: 'title', description: 'description', price: 1}
     end
     it 'create data' do
       expect{post :create, product: @product_params}.to change{Product.all.size}.by(1)
@@ -63,7 +63,7 @@ RSpec.describe Admin::ProductsController, type: :controller do
 
   describe '#update' do
     before(:all) do
-      @product_params = {title: 'title3', description: 'description', price: 1, quantity: 1}
+      @product_params = {title: 'title3', description: 'description', price: 1}
     end
     it 'update data' do
       post :update, product: @product_params, id: @product1.id

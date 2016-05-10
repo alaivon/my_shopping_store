@@ -3,7 +3,6 @@ FactoryGirl.define do
     title  { Faker::Name.name }
     description {Faker::Lorem.word}
     price 1
-    quantity 10
     # after(:build) do |product, eval|
     # 	product.photo << FactoryGirl.build(:image, product_id: product.id)
     # end

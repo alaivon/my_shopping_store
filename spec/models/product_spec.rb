@@ -11,27 +11,26 @@ RSpec.describe Product, type: :model do
 		expect(columns).to include("id")
 		expect(columns).to include("price")
 		expect(columns).to include("description")
-		expect(columns).to include("quantity")
 		expect(columns).not_to include("content")
 	end
 
 	describe 'validates' do
-		it 'presence of title, description, price and quantity' do
+		it 'presence of title, description, price' do
 			@product = create(:product)
 			expect(Product.new).not_to be_valid
 			expect(@product).to be_valid
 		end
-		it 'price & quantity must greater than or equal 1' do
-			@product1 = Product.new(title: "title1", description: "description1", price: 1, quantity: 0)
-			@product2 = Product.new(title: "title2", description: "description1", price: 0, quantity: 1)
+		it 'price must greater than or equal 1' do
+			@product1 = Product.new(title: "title1", description: "description1", price: 1)
+			@product2 = Product.new(title: "title2", description: "description1", price: 0)
 			@product3 = create(:product)
-			expect(@product1).to be_invalid
+			expect(@product1).to be_valid
 			expect(@product2).to be_invalid
 			expect(@product3).to be_valid
 		end
 		it 'test title must be unique' do
 			@product4 = create(:product)
-			@product5 = Product.new(title: @product4.title, description: "test data", price: 1, quantity: 2)
+			@product5 = Product.new(title: @product4.title, description: "test data", price: 1)
 			expect(@product5).not_to be_valid
 			expect(@product5).to be_invalid
 		end
