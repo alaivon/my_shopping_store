@@ -7,6 +7,7 @@ class Admin::ProductsController <  AdminController
   end
 
   def show
+    set_page_title @product.title
   end
 
   def new

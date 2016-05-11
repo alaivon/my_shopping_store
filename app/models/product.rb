@@ -10,11 +10,15 @@ class Product < ActiveRecord::Base
 
 
   def turn_on_sale
-  	self.update(on_sale: true)
+    self.update(on_sale: true)
   end
 
   def turn_off_sale
-  	self.update(on_sale: false)
+    self.update(on_sale: false)
+  end
+
+  def to_param
+    "#{id} #{title}".parameterize
   end
 
 
@@ -25,6 +29,10 @@ class Product < ActiveRecord::Base
       errors.add(:base, 'Cart Items present')
       throw :abort
     end
+  end
+
+  def to_param
+    "#{id} #{title}".parameterize
   end
 
 

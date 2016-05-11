@@ -8,7 +8,9 @@ class ProductsController < ApplicationController
 	end
 
 	def show
+		
 		@product = Product.find(params[:id])
+    set_page_title @product.title
 		@comments = @product.comments.order("created_at DESC")
 		if @comments.blank?
       @avg_rating = 0

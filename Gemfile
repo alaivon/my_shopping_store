@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 
-
+gem 'seo_helper'
 gem 'fog'
 gem 'figaro'
 gem 'roadie', '2.4.3'
