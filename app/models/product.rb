@@ -5,6 +5,7 @@ class Product < ActiveRecord::Base
   validates :title, uniqueness: true
   before_destroy :ensure_not_add_in_cart
   has_one :photo
+  has_many :comments
   accepts_nested_attributes_for :photo
 
 

@@ -9,6 +9,12 @@ class ProductsController < ApplicationController
 
 	def show
 		@product = Product.find(params[:id])
+		@comments = @product.comments.order("created_at DESC")
+		if @comments.blank?
+      @avg_rating = 0
+    else
+      @avg_rating = @comments.average(:rating).round(2)
+    end
 	end
 
 

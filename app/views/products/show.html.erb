@@ -1,72 +1,41 @@
-<div class="col-md-9 col-md-offset-1">
-  <div class="thumbnail">
-    <% if @product.photo.present? %>
-      <%= image_tag(@product.photo.image.medium.url) %>
-    <% else %>
-      <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
-    <% end %>
-    <div class="caption-full clearfix">
-      <h4 class="pull-right"><%= number_to_currency(@product.price) %></h4>
-      <h4><%= @product.title %></h4>
-      <p><%= @product.description %></p>
-      <%= link_to("Add to cart", add_to_cart_product_path(@product), method: :post, :class => "btn btn-sm btn-default pull-right") %>
-    </div> <br>
-     
-    <div class="ratings">
-      <p class="pull-right">3 reviews</p>
-      <p>
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star-empty"></span>
-        4.0 stars
-      </p>
-    </div>
-  </div>
-  <div class="well">
-    <div class="text-right">
-      <a class="btn btn-success">Leave a Review</a>
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col-md-12">
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star-empty"></span>
-        Anonymous
-        <span class="pull-right">10 days ago</span>
-        <p>This product was great in terms of quality. I would definitely buy another!</p>
-      </div>
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col-md-12">
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star-empty"></span>
-        Anonymous
-        <span class="pull-right">12 days ago</span>
-        <p>I've alredy ordered another one!</p>
-      </div>
-    </div>
-    <hr>
+<%= content_for :comment do %>
+  <%= render 'comments/comment', comments:@comments %>
+<% end %>
 
-    <div class="row">
-      <div class="col-md-12">
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star-empty"></span>
-        Anonymous
-        <span class="pull-right">15 days ago</span>
-        <p>I've seen some better than this, but not at this price. I definitely recommend this item.</p>
-      </div>
+<div class="thumbnail clearfix">
+  <% if @product.photo.present? %>
+    <%= image_tag(@product.photo.image.medium.url, class: 'thumbnail') %>
+  <% else %>
+    <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
+  <% end %>
+  <div class="caption-full">
+    <h4 class="pull-right"><%= number_to_currency(@product.price) %></h4>
+    <h4><%= @product.title %></h4>
+    <p><%= @product.description %></p>
+    <div class="star-rating" data-score= <%= @avg_rating %> ></div>
+    <%= link_to("Add to cart", add_to_cart_product_path(@product), method: :post, :class => "btn btn-sm btn-default pull-right") %>
+  </div> 
+  <br>
+</div>   
+<div class="well">
+  <%= simple_form_for [@product, @product.comments.build] do |f| %>
+    <div class="field">
+      <div id="star-rating"></div>
     </div>
-  </div>
+    <%= f.input :comment %>
+    <%= f.submit "Leave Message", class: "btn btn-default btn-sm" %>
+  <% end %>
 </div>
+<script>
+  $('#star-rating').raty({
+    path: '/assets/',
+    scoreName: 'comment[rating]'
+  });
+  $('.star-rating').raty({
+  path: '/assets/',
+  readOnly: true,
+  score: function() {
+  return $(this).attr('data-score');
+}
+});
+</script>

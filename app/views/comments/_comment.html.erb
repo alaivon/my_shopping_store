@@ -1,0 +1,20 @@
+<h4><%= pluralize(@comments.size, "comment") %></h4>
+<% comments.each do |comment| %>
+	<div class="star-rating" data-score= <%= comment.rating %> ></div>
+  <p class="comment_content"><%= comment.comment %>
+  <p class="comment_info">
+  Posted by	<%= comment.user.email %></p>
+  <p class="comment_time"><%= time_ago_in_words(comment.created_at)  %> ago</p>
+  <hr>
+  </p>
+<% end %>
+
+<script>
+	$('.star-rating').raty({
+ 		path: '/assets/',
+    readOnly: true, 
+    score: function() {
+    	return $(this).attr('data-score');
+    }
+  });
+</script>

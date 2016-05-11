@@ -6,4 +6,5 @@
         My Cart <i class="fa fa-shopping-cart fa-lg">( <%= render_cart_items_count(@current_cart) %> )</i>
       <% end %>
     </div>
+    <%= yield :comment %>
   </div>
