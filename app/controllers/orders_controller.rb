@@ -21,10 +21,7 @@ class OrdersController < ApplicationController
   def create
     @order = current_user.orders.build(order_params)
     if @order.save
-      @order.add_items_from_cart(@current_cart)
-      @order.calculate_total!(@current_cart)
-      Cart.destroy(session[:cart_id])
-      session[:cart_id] = nil
+      OrderPlacingService.new(current_cart, @order).place_order!
       redirect_to order_url(@order.token)
     else
       render :new

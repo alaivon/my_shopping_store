@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-
-
+gem 'figaro'
+gem 'roadie', '2.4.3'
 gem 'aasm'
 gem 'awesome_rails_console'
 gem 'font-awesome-rails'
@@ -58,6 +58,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'letter_opener'
 end
 
 group :development do
