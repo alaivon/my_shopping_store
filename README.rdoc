@@ -39,3 +39,4 @@ notes:
 	order token
 	aasm
 	i18n
+	on-sale function

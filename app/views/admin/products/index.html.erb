@@ -43,7 +43,6 @@
             <%= link_to "ON-SALE", on_sale_admin_product_path(product), method: :post  %>
             <% else %>
             <%= link_to "OFF-SALE", off_sale_admin_product_path(product), method: :post, data: {confirm: "Your product will be off-sale, Are you Sure?"}  %>
-
           <% end %>
         </td>
       </tr>
