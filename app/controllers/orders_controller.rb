@@ -22,6 +22,8 @@ class OrdersController < ApplicationController
     @order = current_user.orders.build(order_params)
     if @order.save
       OrderPlacingService.new(@current_cart, @order).place_order!
+      Cart.destroy(session[:cart_id])
+      session[:cart_id] = nil
       redirect_to order_url(@order.token)
     else
       render :new
