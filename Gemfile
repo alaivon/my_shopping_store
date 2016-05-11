@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'friendly_id'
 gem 'seo_helper'
 gem 'fog'
 gem 'figaro'

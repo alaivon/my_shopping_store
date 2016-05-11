@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
 
 	def show
 		
-		@product = Product.find(params[:id])
+		@product = Product.friendly.find(params[:id])
     set_page_title @product.title
 		@comments = @product.comments.order("created_at DESC")
 		if @comments.blank?
@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
 
 
 	def add_to_cart
-		@product = Product.find(params[:id])
+		@product = Product.friendly.find(params[:id])
 		@cart_item = @current_cart.add_product_to_cart(@product)
 		if @cart_item.save
 			redirect_to :back, notice: "You add #{@product.title} to your cart"

@@ -7,6 +7,8 @@ class Product < ActiveRecord::Base
   has_one :photo
   has_many :comments
   accepts_nested_attributes_for :photo
+  extend FriendlyId
+  friendly_id :title, use: [:slugged, :history]
 
 
   def turn_on_sale
@@ -17,8 +19,8 @@ class Product < ActiveRecord::Base
     self.update(on_sale: false)
   end
 
-  def to_param
-    "#{id} #{title}".parameterize
+  def should_generate_new_friendly_id?
+    title_changed?
   end
 
 
@@ -31,9 +33,7 @@ class Product < ActiveRecord::Base
     end
   end
 
-  def to_param
-    "#{id} #{title}".parameterize
-  end
+
 
 
 
