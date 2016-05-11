@@ -7,7 +7,7 @@ CarrierWave.configure do |config|
       aws_secret_access_key: ENV['aws_secret_key'], 
       region:                'us-east-1',                
     }
-    config.fog_directory = 'shopstore'
+    config.fog_directory = 'shop-store'
   else
     config.storage :file
   end
