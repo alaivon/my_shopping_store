@@ -26,7 +26,7 @@ class Admin::ProductsController <  AdminController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to admin_product_url(@product), notice: 'Product was successfully created.'
+      redirect_to admin_products_url, notice: 'Product was successfully created.'
     else
       render :new
     end
@@ -35,7 +35,7 @@ class Admin::ProductsController <  AdminController
 
   def update
     if @product.update(product_params)
-      redirect_to admin_product_url(@product), notice: 'Product was successfully created.'
+      redirect_to admin_products_url, notice: 'Product was successfully created.'
     else
       render :edit
     end
