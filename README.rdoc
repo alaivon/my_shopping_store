@@ -28,7 +28,7 @@ Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
 
 notes:
-	set_cart in concern
+	aasm set_cart in concern
 	add_product_to_cart method in model cart
 	use inject to total price
 	empty cart => destroy action
@@ -42,3 +42,6 @@ notes:
 	on-sale function
 	raty
 	content_for comment for show
+	mailgun letter_opener
+	s3
+	admin_controller
