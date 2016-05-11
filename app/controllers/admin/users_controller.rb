@@ -1,7 +1,5 @@
-class Admin::UsersController < ApplicationController
-	layout "admin"
-	before_action :authenticate_user!
-	before_action :admin_required
+class Admin::UsersController <  AdminController
+	
 	def index
 		@users = User.all.reject{|user| user.id == 1}
 	end

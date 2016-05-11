@@ -1,8 +1,6 @@
-class Admin::ProductsController < ApplicationController
-  layout 'admin'
+class Admin::ProductsController <  AdminController
   before_action :set_product, only: [:show, :edit, :update, :destroy, :on_sale, :off_sale]
-  before_action :authenticate_user!
-  before_action :admin_required
+  
 
   def index
     @products = Product.all
