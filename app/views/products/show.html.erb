@@ -17,15 +17,18 @@
   </div> 
   <br>
 </div>   
-<div class="well">
-  <%= simple_form_for [@product, @product.comments.build] do |f| %>
-    <div class="field">
-      <div id="star-rating"></div>
-    </div>
-    <%= f.input :comment %>
-    <%= f.submit "Leave Message", class: "btn btn-default btn-sm" %>
-  <% end %>
-</div>
+<% if user_signed_in? %>
+  
+  <div class="well">
+    <%= simple_form_for [@product, @product.comments.build] do |f| %>
+      <div class="field">
+        <div id="star-rating"></div>
+      </div>
+      <%= f.input :comment %>
+      <%= f.submit "Leave Message", class: "btn btn-default btn-sm" %>
+    <% end %>
+  </div>
+<% end %>
 <script>
   $('#star-rating').raty({
     path: '/assets/',
