@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 20160511152309) do
     t.string   "slug"
   end
 
-  add_index "products", ["slug"], name: "index_products_on_slug", unique: true
+  add_index "products", ["slug"], name: "index_products_on_slug"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false

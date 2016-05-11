@@ -1,6 +1,6 @@
 class AddSlugToProduct < ActiveRecord::Migration
   def change
-    add_column :products, :slug, :string
-    add_index :products, :slug, unique: true
+    add_column :products, :slug, :string, unique: true
+    add_index :products, :slug
   end
 end
