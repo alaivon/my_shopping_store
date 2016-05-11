@@ -37,9 +37,9 @@
           <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
         <% end %>
         <div class="caption">
-          <h4 class="pull-right"><%= number_to_currency(product.price) %></h4>
-          <h4><%= link_to product.title, product  %></h4>
-          <p><%= truncate(product.description, length: 20) %></p>            
+          <h5><%= link_to product.title, product  %></h5>
+          <h5><%= number_to_currency(product.price) %></h5>
+                     
         </div>
         <div class="ratings clearfix">
           <p class="pull-right"><%= pluralize(product.comments.size, "comment") %></p>
