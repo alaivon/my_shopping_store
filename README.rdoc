@@ -40,3 +40,5 @@ notes:
 	aasm
 	i18n
 	on-sale function
+	raty
+	content_for comment for show

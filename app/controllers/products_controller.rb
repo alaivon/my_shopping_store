@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 	before_action :authenticate_user!, only: [:add_to_cart]
 
 	def index
-		@products = Product.all
+		@products = Product.where(on_sale: true)
 	end
 
 	def show

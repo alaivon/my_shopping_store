@@ -1,10 +1,11 @@
 class Admin::ProductsController < ApplicationController
+  layout 'admin'
   before_action :set_product, only: [:show, :edit, :update, :destroy, :on_sale, :off_sale]
   before_action :authenticate_user!
   before_action :admin_required
 
   def index
-    @products = Product.where(on_sale: true)
+    @products = Product.all
   end
 
   def show
