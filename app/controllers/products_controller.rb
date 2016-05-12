@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+	rescue_from ActiveRecord::RecordNotFound, with: :invalid_product
 	include CurrentCart
 	before_action :set_cart
 	before_action :authenticate_user!, only: [:add_to_cart]
@@ -9,7 +10,7 @@ class ProductsController < ApplicationController
 
 	def show
 		
-		@product = Product.friendly.find(params[:id])
+		@product = Product.where(on_sale: true).friendly.find(params[:id])
     set_page_title @product.title
 		@comments = @product.comments.order("created_at DESC")
 		if @comments.blank?
@@ -28,5 +29,10 @@ class ProductsController < ApplicationController
 		else
 			render :show
 		end
+	end
+
+	def invalid_product
+		logger.error "Attemt to access invalid product #{params[:id]}"
+		redirect_to root_url, notice: "The product isn't exist or on sale!"
 	end
 end

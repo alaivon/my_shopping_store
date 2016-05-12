@@ -20,7 +20,7 @@
           <%= product.id %>
         </td>
         <td>
-          <%= link_to product_path(product) do %>
+          <%= link_to admin_product_path(product) do %>
             <% if product.photo.present? %>
               <%= image_tag(product.photo.image.thumb.url, class: "thumbnail") %>
             <% else %>
