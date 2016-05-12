@@ -9,7 +9,7 @@
     <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
   <% end %>
   <div class="caption-full">
-    <h4 class="pull-right"><%= number_to_currency(@product.price) %></h4>
+    <h4 class="pull-right product_price"><%= number_to_currency(@product.price) %></h4>
     <h4><%= @product.title %></h4>
     <p><%= simple_format(@product.description) %></p>
     <div class="star-rating" data-score= <%= @avg_rating %> ></div>

@@ -32,17 +32,17 @@
     <div class="col-sm-4 col-lg-4 col-md-4">
       <div class="thumbnail main_page">
         <% if product.photo.present? %>
-          <%= image_tag(product.photo.image.normal.url) %>
+          <%= image_tag(product.photo.image.medium.url) %>
         <% else %>
           <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
         <% end %>
         <div class="caption">
-          <h5><%= link_to product.title, product  %></h5>
-          <h5><%= number_to_currency(product.price) %></h5>
+          <h5><%= link_to truncate(product.title, length: 30), product  %></h5>
+          <h5 class="product_price"><%= number_to_currency(product.price) %></h5>
                      
         </div>
         <div class="ratings clearfix">
-          <p class="pull-right"><%= pluralize(product.comments.size, "comment") %></p>
+          <p class="pull-right comment_count"><%= pluralize(product.comments.size, "comment") %></p>
         
             <div class="star-rating" data-score= <%= render_avg_rating(product) %> ></div>
           

@@ -1,4 +1,4 @@
-<h4><%= pluralize(@comments.size, "comment") %></h4>
+<h4 class="comment_show"><%= pluralize(@comments.size, "comment") %></h4>
 <% comments.each do |comment| %>
 	<div class="star-rating" data-score= <%= comment.rating %> ></div>
   <p class="comment_content"><%= comment.comment %>

@@ -1,3 +1,31 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.product_price {
+	color: #8B7F2E;
+	font-weight: bold
+}
+
+.comment_count {
+	color: gray;
+	opacity: 0.5
+}
+
+.comment_info, .comment_time {
+	color: gray;
+	margin-bottom: 0;
+	font-size: 12px;
+}
+.comment_time {
+	color: gray;
+}
+.comment_content {
+	color: #DEB887;
+	margin-bottom: .4em;
+	margin-top: 3px;
+	font-size: 16px;
+}
+a.list-group-item {
+	color: #A52A2A;
+	font-size: 16px;
+}
