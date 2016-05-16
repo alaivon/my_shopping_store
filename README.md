@@ -3,6 +3,10 @@ Hi, I'm Bill, this is one of projects for my exercise, A Shopping Store!
 Most of rails courses would take EC to be a example to teaching.
 So I just make it a little change and add a easy rspec to test.
 
+http://luxury-shop-store.herokuapp.com/
+admin: admin@test.com
+password: 1234567
+
 ## Gem
 - [friendly_id](https://github.com/norman/friendly_id), Create pretty URLs
 
