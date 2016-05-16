@@ -1,10 +1,15 @@
- 
-    <div class="comment_body">
-      <%= simple_format(comment.comment) %>
-      <div class="star-rating pull-right" data-score= <%= comment.rating %> > </div>
-    </div>
-    <div class="comment_info">  
-      
+
+    <h4 class="comment_show"><%= pluralize(comments.size, "comment") %></h4><hr>
+    <div class="comment_info">
+      <% comments.each do |comment| %>  
+        <div class="star-rating" data-score= <%= comment.rating %> ></div>
+        <p class="comment_content"><%= comment.comment %></p>
+        <p class="comment_info">
+          Posted by <%= comment.user.email %>
+        </p>
+        <p class="comment_time"><%= time_ago_in_words(comment.created_at)  %> ago</p>
+      <hr>
+      <% end %>
     </div>
 
 
@@ -18,5 +23,3 @@
     }
   });
 </script>
-
-`

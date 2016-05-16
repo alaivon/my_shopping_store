@@ -43,6 +43,13 @@ class OrdersController < ApplicationController
     redirect_to orders_url, notice: "You pay it Successfully!"
   end
 
+  def pay_by_atm
+    @order = current_user.orders.find_by_token(params[:id])
+    @order.set_payment!('ATM')
+    @order.make_payment!
+    redirect_to orders_url, notice: "You pay it Successfully!"
+  end
+
 
 
   private
